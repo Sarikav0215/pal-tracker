@@ -1,9 +1,12 @@
 package io.pivotal.pal.tracker;
 
+import org.springframework.stereotype.Repository;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+@Repository
 public class InMemoryTimeEntryRepository implements TimeEntryRepository {
     private final HashMap<Long, TimeEntry> timeEntries = new HashMap<>();
 
@@ -14,11 +17,11 @@ public class InMemoryTimeEntryRepository implements TimeEntryRepository {
         long id = currentId++;
 
         TimeEntry newTimeEntry = new TimeEntry(
-            id,
-            timeEntry.getProjectId(),
-            timeEntry.getUserId(),
-            timeEntry.getDate(),
-            timeEntry.getHours()
+                id,
+                timeEntry.getProjectId(),
+                timeEntry.getUserId(),
+                timeEntry.getDate(),
+                timeEntry.getHours()
         );
 
         timeEntries.put(id, newTimeEntry);
@@ -40,11 +43,11 @@ public class InMemoryTimeEntryRepository implements TimeEntryRepository {
         if (find(id) == null) return null;
 
         TimeEntry updatedEntry = new TimeEntry(
-            id,
-            timeEntry.getProjectId(),
-            timeEntry.getUserId(),
-            timeEntry.getDate(),
-            timeEntry.getHours()
+                id,
+                timeEntry.getProjectId(),
+                timeEntry.getUserId(),
+                timeEntry.getDate(),
+                timeEntry.getHours()
         );
 
         timeEntries.replace(id, updatedEntry);

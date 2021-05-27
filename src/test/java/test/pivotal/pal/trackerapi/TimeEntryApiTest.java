@@ -22,12 +22,11 @@ import static org.springframework.boot.test.context.SpringBootTest.WebEnvironmen
 @SpringBootTest(classes = PalTrackerApplication.class, webEnvironment = RANDOM_PORT)
 public class TimeEntryApiTest {
 
-    @Autowired
-    private TestRestTemplate restTemplate;
-
     private final long projectId = 123L;
     private final long userId = 456L;
     private final TimeEntry timeEntry = new TimeEntry(0, projectId, userId, LocalDate.parse("2017-01-08"), 8);
+    @Autowired
+    private TestRestTemplate restTemplate;
 
     @Test
     public void testCreate() {
